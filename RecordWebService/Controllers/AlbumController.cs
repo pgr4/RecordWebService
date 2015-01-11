@@ -11,18 +11,11 @@ namespace RecordWebService.Controllers
 {
     public class AlbumController : ApiController
     {
-        //TODO:REMOVE AS NOT NEEDED
-        public IEnumerable<Album> Get()
-        {
-            List<Album> ret = new List<Album>();
-            var dt = DatabaseSingleton.Instance.DbAlbums;
-            foreach (var item in dt)
-            {
-                ret.Add(new Album(item));
-            }
-            return ret;
-        }
-
+        /// <summary>
+        /// Get an album from the database matching the key s
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
         public Album Get(string s)
         {
             var b = StaticMethods.StringToByteArray(s);

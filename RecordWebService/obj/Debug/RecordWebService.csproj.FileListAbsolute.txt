@@ -30,4 +30,3 @@ c:\users\pat\documents\visual studio 2013\Projects\RecordWebService\RecordWebSer
 c:\users\pat\documents\visual studio 2013\Projects\RecordWebService\RecordWebService\obj\Debug\RecordWebService.dll
 c:\users\pat\documents\visual studio 2013\Projects\RecordWebService\RecordWebService\obj\Debug\RecordWebService.pdb
 C:\Users\pat\documents\visual studio 2013\Projects\RecordWebService\RecordWebService\bin\System.Data.SQLite.dll
-C:\Users\pat\documents\visual studio 2013\Projects\RecordWebService\RecordWebService\obj\Debug\RecordWebService.csprojResolveAssemblyReference.cache

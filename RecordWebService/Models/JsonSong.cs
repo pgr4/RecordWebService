@@ -5,14 +5,14 @@ using System.Web;
 
 namespace RecordWebService.Models
 {
-    public class JsonSong
+    public class JsonAlbumData
     {
         public string Key { get; set; }
         public string Songs { get; set; }
         public string Artist { get; set; }
         public string Album { get; set; }
 
-        public JsonSong()
+        public JsonAlbumData()
         {
             
         }

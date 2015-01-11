@@ -7,24 +7,22 @@ namespace RecordWebService.Models
 {
     public class Song
     {
-        public byte[] Key { get; set; }
-        public string Title { get; set; }
+        public List<string> Titles { get; set; }
         public string Artist { get; set; }
         public string Album { get; set; }
-        public int BreakNumber { get; set; }
 
         public Song()
         {
             
         }
 
-        public Song(tblSong tblSong)
+        public Song(string artist, string album, string title)
         {
-            Key = tblSong.Key;
-            Title = tblSong.Title;
-            Artist = tblSong.Artist;
-            Album = tblSong.Album;
-            BreakNumber = tblSong.Break_Number;
+            Artist = artist;
+            Album = album;
+            Titles = new List<string>();
+            Titles.Add(title);
         }
+
     }
 }

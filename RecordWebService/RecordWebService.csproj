@@ -160,8 +160,9 @@
     </Compile>
     <Compile Include="Models\Album.cs" />
     <Compile Include="Models\DatabaseSingleton.cs" />
+    <Compile Include="Models\JSONAlbum.cs" />
     <Compile Include="Models\JsonSong.cs" />
-    <Compile Include="Models\Song.cs" />
+    <Compile Include="Models\JSONArtist.cs" />
     <Compile Include="Models\StaticMethods.cs" />
     <Compile Include="Models\tblAlbum.cs" />
     <Compile Include="Models\tblSong.cs" />

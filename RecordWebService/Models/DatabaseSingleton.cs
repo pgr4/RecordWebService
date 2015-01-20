@@ -147,6 +147,13 @@ namespace RecordWebService.Models
             command.ExecuteNonQuery();
         }
 
+        public byte[] GetImageData(byte[] key)
+        {
+            return (from item in DbAlbums
+                       where item.Key == key
+                       select item.Image).ToList().FirstOrDefault();
+        }
+
         #endregion
     }
 }

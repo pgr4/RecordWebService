@@ -22,32 +22,44 @@ namespace RecordWebService.Controllers
         /// Get all Songs from the database
         /// </summary>
         /// <returns></returns>
-        public IEnumerable<Song> Get()
+        public IEnumerable<JSONArtist> Get()
         {
             return MergeSongs(DatabaseSingleton.Instance.DbSongs);
         }
 
-        private List<Song> MergeSongs(Table<tblSong> list)
+        private List<JSONArtist> MergeSongs(Table<tblSong> list)
         {
-            List<Song> ret =new List<Song>();
-            foreach (var item in list)
+            List<JSONArtist> ret = new List<JSONArtist>();
+            foreach (var item in list.ToList())
             {
-                var found = (from i in ret
-                    where i.Album == item.Album
-                    where i.Artist == item.Artist
-                    select i).FirstOrDefault();
+                var artist = (from i in ret
+                              where i.Name == item.Artist
+                              select i).ToList().FirstOrDefault();
 
-                if (found == null)
+                if (artist == null)
                 {
-                    ret.Add(new Song(item.Artist,item.Album,item.Title));
+                    ret.Add(new JSONArtist(item.Artist, new JSONAlbum(DatabaseSingleton.Instance.GetImageData(item.Key), item.Title, item.Album)));
                 }
                 else
                 {
-                    found.Titles.Add(item.Title);
+                    var album = (from ai in artist.Albums
+                                 where ai.Name == item.Album
+                                 select ai).ToList().FirstOrDefault();
+
+                    if (album == null)
+                    {
+                        artist.Albums.Add(new JSONAlbum(DatabaseSingleton.Instance.GetImageData(item.Key), item.Title, item.Album));
+                    }
+                    else
+                    {
+                        album.Songs.Add(item.Title);
+                    }
                 }
             }
 
-            return ret;
+            return (from i in ret
+                    orderby i.Name descending
+                    select i).ToList();
         }
 
         /// <summary>
@@ -56,19 +68,19 @@ namespace RecordWebService.Controllers
         /// </summary>
         /// <param name="s"></param>
         /// <returns></returns>
-        public Song Get(string s)
+        public JSONArtist Get(string s)
         {
-            Song ret = null;
+            JSONArtist ret = null;
             var b = StaticMethods.StringToByteArray(s);
             foreach (var item in DatabaseSingleton.Instance.GetTblSongs(b))
             {
                 if (ret == null)
                 {
-                    ret = new Song(item.Artist,item.Album,item.Title);
+                    //ret = new JSONArtist(item.Artist, item.Album, item.Title);
                 }
                 else
                 {
-                    ret.Titles.Add(item.Title);
+                    //    ret.Titles.Add(item.Title);
                 }
             }
             return ret;
@@ -87,7 +99,7 @@ namespace RecordWebService.Controllers
             int i = 0;
             foreach (var item in jad.GetTblSongs())
             {
-                DatabaseSingleton.Instance.AddTblSong(item,i++);
+                DatabaseSingleton.Instance.AddTblSong(item, i++);
             }
 
             return jad.GetTblSongs();

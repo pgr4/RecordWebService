@@ -105,15 +105,5 @@ namespace RecordWebService.Controllers
             return jad.GetTblSongs();
         }
 
-        /// <summary>
-        /// Update the database
-        /// TODO: Add a new Update Controller
-        /// </summary>
-        [System.Web.Http.HttpPost]
-        public void Get() 
-        {
-            DatabaseSingleton.Instance.RefreshDatabaseTables();
-        } 
-
     }
 }

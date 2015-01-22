@@ -98,7 +98,7 @@ namespace RecordWebService.Models
         /// <summary>
         /// Get the Database contents upon startup and after an update to the database
         /// </summary>
-        private void RefreshDatabaseTables()
+        public void RefreshDatabaseTables()
         {
             var context = new DataContext(dbConnection);
 

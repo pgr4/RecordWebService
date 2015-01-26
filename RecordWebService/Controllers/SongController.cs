@@ -22,45 +22,45 @@ namespace RecordWebService.Controllers
         /// Get all Songs from the database
         /// </summary>
         /// <returns></returns>
-        public IEnumerable<JSONArtist> Get()
-        {
-            return MergeSongs(DatabaseSingleton.Instance.DbSongs);
-        }
+        //public IEnumerable<JSONArtist> Get()
+        //{
+        //    return MergeSongs(DatabaseSingleton.Instance.DbSongs);
+        //}
 
-        private List<JSONArtist> MergeSongs(Table<tblSong> list)
-        {
-            List<JSONArtist> ret = new List<JSONArtist>();
-            foreach (var item in list.ToList())
-            {
-                var artist = (from i in ret
-                              where i.Name == item.Artist
-                              select i).ToList().FirstOrDefault();
+        //private List<JSONArtist> MergeSongs(Table<tblSong> list)
+        //{
+        //    List<JSONArtist> ret = new List<JSONArtist>();
+        //    foreach (var item in list.ToList())
+        //    {
+        //        var artist = (from i in ret
+        //                      where i.Name == item.Artist
+        //                      select i).ToList().FirstOrDefault();
 
-                if (artist == null)
-                {
-                    ret.Add(new JSONArtist(item.Artist, new JSONAlbum(DatabaseSingleton.Instance.GetImageData(item.Key), item.Title, item.Album)));
-                }
-                else
-                {
-                    var album = (from ai in artist.Albums
-                                 where ai.Name == item.Album
-                                 select ai).ToList().FirstOrDefault();
+        //        if (artist == null)
+        //        {
+        //            ret.Add(new JSONArtist(item.Artist, new JSONAlbum(DatabaseSingleton.Instance.GetImageData(item.Key), item.Title, item.Album)));
+        //        }
+        //        else
+        //        {
+        //            var album = (from ai in artist.Albums
+        //                         where ai.Name == item.Album
+        //                         select ai).ToList().FirstOrDefault();
 
-                    if (album == null)
-                    {
-                        artist.Albums.Add(new JSONAlbum(DatabaseSingleton.Instance.GetImageData(item.Key), item.Title, item.Album));
-                    }
-                    else
-                    {
-                        album.Songs.Add(item.Title);
-                    }
-                }
-            }
+        //            if (album == null)
+        //            {
+        //                artist.Albums.Add(new JSONAlbum(DatabaseSingleton.Instance.GetImageData(item.Key), item.Title, item.Album));
+        //            }
+        //            else
+        //            {
+        //                album.Songs.Add(item.Title);
+        //            }
+        //        }
+        //    }
 
-            return (from i in ret
-                    orderby i.Name descending
-                    select i).ToList();
-        }
+        //    return (from i in ret
+        //            orderby i.Name descending
+        //            select i).ToList();
+        //}
 
         /// <summary>
         /// Get all songs in the database that match the key from s
@@ -68,21 +68,14 @@ namespace RecordWebService.Controllers
         /// </summary>
         /// <param name="s"></param>
         /// <returns></returns>
-        public JSONArtist Get(string s)
+        public TotalAlbum Get(string key)
         {
-            JSONArtist ret = null;
-            var b = StaticMethods.StringToByteArray(s);
-            foreach (var item in DatabaseSingleton.Instance.GetTblSongs(b))
-            {
-                if (ret == null)
-                {
-                    //ret = new JSONArtist(item.Artist, item.Album, item.Title);
-                }
-                else
-                {
-                    //    ret.Titles.Add(item.Title);
-                }
-            }
+            TotalAlbum ret = new TotalAlbum();
+            var b = Convert.FromBase64String(key);
+            ret.Album = DatabaseSingleton.Instance.GetTblAlbums(b);
+            ret.Songs = (from item in DatabaseSingleton.Instance.DbSongs
+                         where item.Key == b
+                         select item.Title).ToList();
             return ret;
         }
 

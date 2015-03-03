@@ -115,6 +115,15 @@ namespace RecordWebService.Models
             return ret;
         }
 
+        public List<string> GetSongNames(byte[] b)
+        {
+            var ret = (from item in DbSongs
+                       where item.Key == b
+                       select item.Title).ToList();
+
+            return ret;
+        } 
+
         public tblAlbum GetTblAlbums(byte[] b)
         {
             var ret = (from item in DbAlbums

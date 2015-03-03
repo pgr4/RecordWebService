@@ -13,6 +13,7 @@ namespace RecordWebService.Models
         public int Calculated { get; set; }
         public int Breaks { get; set; }
         public byte[] Image { get; set; }
+        public List<string> Songs { get; set; }
 
         public Album()
         {
@@ -26,6 +27,7 @@ namespace RecordWebService.Models
             Artist = tblAlbum.Artist;
             Breaks = tblAlbum.Breaks;
             Image = tblAlbum.Image;
+            Songs = new List<string>();
         }
     }
 }

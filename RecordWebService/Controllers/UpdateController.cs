@@ -14,7 +14,7 @@ namespace RecordWebService.Controllers
         /// Update the database
         /// TODO: Add a new Update Controller
         /// </summary>
-        [System.Web.Http.HttpPost]
+        [System.Web.Http.HttpGet]
         public void Get()
         {
             DatabaseSingleton.Instance.RefreshDatabaseTables();

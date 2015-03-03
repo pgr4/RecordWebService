@@ -30,4 +30,3 @@ C:\Users\pat\documents\visual studio 2013\Projects\RecordWebService\RecordWebSer
 C:\Users\pat\documents\visual studio 2013\Projects\RecordWebService\RecordWebService\bin\Antlr3.Runtime.pdb
 C:\Users\pat\documents\visual studio 2013\Projects\RecordWebService\RecordWebService\obj\Debug\RecordWebService.dll
 C:\Users\pat\documents\visual studio 2013\Projects\RecordWebService\RecordWebService\obj\Debug\RecordWebService.pdb
-C:\Users\pat\documents\visual studio 2013\Projects\RecordWebService\RecordWebService\obj\Debug\RecordWebService.csprojResolveAssemblyReference.cache

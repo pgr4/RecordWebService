@@ -30,3 +30,35 @@ C:\Users\pat\documents\visual studio 2013\Projects\RecordWebService\RecordWebSer
 C:\Users\pat\documents\visual studio 2013\Projects\RecordWebService\RecordWebService\bin\Antlr3.Runtime.pdb
 C:\Users\pat\documents\visual studio 2013\Projects\RecordWebService\RecordWebService\obj\Debug\RecordWebService.dll
 C:\Users\pat\documents\visual studio 2013\Projects\RecordWebService\RecordWebService\obj\Debug\RecordWebService.pdb
+C:\Users\pat\Desktop\My Projects\RecordWebService\RecordWebService\bin\RecordWebService.dll.config
+C:\Users\pat\Desktop\My Projects\RecordWebService\RecordWebService\bin\RecordWebService.dll
+C:\Users\pat\Desktop\My Projects\RecordWebService\RecordWebService\bin\RecordWebService.pdb
+C:\Users\pat\Desktop\My Projects\RecordWebService\RecordWebService\bin\Antlr3.Runtime.dll
+C:\Users\pat\Desktop\My Projects\RecordWebService\RecordWebService\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\pat\Desktop\My Projects\RecordWebService\RecordWebService\bin\Newtonsoft.Json.dll
+C:\Users\pat\Desktop\My Projects\RecordWebService\RecordWebService\bin\System.Data.SQLite.dll
+C:\Users\pat\Desktop\My Projects\RecordWebService\RecordWebService\bin\System.Net.Http.Formatting.dll
+C:\Users\pat\Desktop\My Projects\RecordWebService\RecordWebService\bin\System.Web.Helpers.dll
+C:\Users\pat\Desktop\My Projects\RecordWebService\RecordWebService\bin\System.Web.Http.dll
+C:\Users\pat\Desktop\My Projects\RecordWebService\RecordWebService\bin\System.Web.Http.WebHost.dll
+C:\Users\pat\Desktop\My Projects\RecordWebService\RecordWebService\bin\System.Web.Mvc.dll
+C:\Users\pat\Desktop\My Projects\RecordWebService\RecordWebService\bin\System.Web.Optimization.dll
+C:\Users\pat\Desktop\My Projects\RecordWebService\RecordWebService\bin\System.Web.Razor.dll
+C:\Users\pat\Desktop\My Projects\RecordWebService\RecordWebService\bin\System.Web.WebPages.Deployment.dll
+C:\Users\pat\Desktop\My Projects\RecordWebService\RecordWebService\bin\System.Web.WebPages.dll
+C:\Users\pat\Desktop\My Projects\RecordWebService\RecordWebService\bin\System.Web.WebPages.Razor.dll
+C:\Users\pat\Desktop\My Projects\RecordWebService\RecordWebService\bin\WebGrease.dll
+C:\Users\pat\Desktop\My Projects\RecordWebService\RecordWebService\bin\Newtonsoft.Json.xml
+C:\Users\pat\Desktop\My Projects\RecordWebService\RecordWebService\bin\System.Net.Http.Formatting.xml
+C:\Users\pat\Desktop\My Projects\RecordWebService\RecordWebService\bin\System.Web.Helpers.xml
+C:\Users\pat\Desktop\My Projects\RecordWebService\RecordWebService\bin\System.Web.Http.xml
+C:\Users\pat\Desktop\My Projects\RecordWebService\RecordWebService\bin\System.Web.Http.WebHost.xml
+C:\Users\pat\Desktop\My Projects\RecordWebService\RecordWebService\bin\System.Web.Mvc.xml
+C:\Users\pat\Desktop\My Projects\RecordWebService\RecordWebService\bin\System.Web.Optimization.xml
+C:\Users\pat\Desktop\My Projects\RecordWebService\RecordWebService\bin\System.Web.Razor.xml
+C:\Users\pat\Desktop\My Projects\RecordWebService\RecordWebService\bin\System.Web.WebPages.xml
+C:\Users\pat\Desktop\My Projects\RecordWebService\RecordWebService\bin\System.Web.WebPages.Deployment.xml
+C:\Users\pat\Desktop\My Projects\RecordWebService\RecordWebService\bin\System.Web.WebPages.Razor.xml
+C:\Users\pat\Desktop\My Projects\RecordWebService\RecordWebService\bin\Antlr3.Runtime.pdb
+C:\Users\pat\Desktop\My Projects\RecordWebService\RecordWebService\obj\Debug\RecordWebService.dll
+C:\Users\pat\Desktop\My Projects\RecordWebService\RecordWebService\obj\Debug\RecordWebService.pdb

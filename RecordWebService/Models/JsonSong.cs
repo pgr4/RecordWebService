@@ -14,7 +14,7 @@ namespace RecordWebService.Models
 
         public JsonAlbumData()
         {
-            
+
         }
 
         public List<tblSong> GetTblSongs()
@@ -23,15 +23,35 @@ namespace RecordWebService.Models
 
             List<tblSong> ret = new List<tblSong>();
             int i = 0;
-            foreach (var item in Songs.Split(','))
+            var splitList = Songs.Split(',');
+            foreach (var item in splitList)
             {
+                int start, end;
+                if (i == 0)
+                {
+                    start = int.MinValue;
+                    end = key[0];
+                }
+                else if (i == splitList.Count() - 1)
+                {
+                    start = key[i - 1];
+                    end = int.MaxValue;
+                }
+                else
+                {
+                    start = key[i - 1];
+                    end = key[i];
+                }
+
                 ret.Add(new tblSong()
                 {
                     Album = Album,
                     Artist = Artist,
                     Break_Number = i++,
                     Key = key,
-                    Title = item
+                    Title = item,
+                    Break_Location_Start = start,
+                    Break_Location_End = end
                 });
             }
 

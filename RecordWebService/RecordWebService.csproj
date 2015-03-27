@@ -168,7 +168,6 @@
     <Compile Include="Models\StaticMethods.cs" />
     <Compile Include="Models\tblAlbum.cs" />
     <Compile Include="Models\tblSong.cs" />
-    <Compile Include="Models\Test.cs" />
     <Compile Include="Models\TotalAlbum.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SQLite.cs" />

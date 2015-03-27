@@ -122,7 +122,7 @@ namespace RecordWebService.Models
                        select item.Title).ToList();
 
             return ret;
-        } 
+        }
 
         public tblAlbum GetTblAlbums(byte[] b)
         {
@@ -150,7 +150,7 @@ namespace RecordWebService.Models
         {
             string sql;
             SQLiteCommand command;
-            sql = "insert into tblSong (Key, Title, Artist, Album, Break_Number) values (@Key,'" + ts.Title.Replace("'", "''") + "','" + ts.Artist.Replace("'", "''") + "','" + ts.Album.Replace("'", "''") + "','" + breaknum + "')";
+            sql = "insert into tblSong (Key, Title, Artist, Album, Break_Number, Break_Location_Start, Break_Location_End) values (@Key,'" + ts.Title.Replace("'", "''") + "','" + ts.Artist.Replace("'", "''") + "','" + ts.Album.Replace("'", "''") + "','" + breaknum + "','" + ts.Break_Location_Start + "','" + ts.Break_Location_End + "')";
             command = new SQLiteCommand(sql, dbConnection);
             command.Parameters.Add("@Key", DbType.Binary).Value = ts.Key;
             command.ExecuteNonQuery();
@@ -159,8 +159,8 @@ namespace RecordWebService.Models
         public byte[] GetImageData(byte[] key)
         {
             return (from item in DbAlbums
-                       where item.Key == key
-                       select item.Image).ToList().FirstOrDefault();
+                    where item.Key == key
+                    select item.Image).ToList().FirstOrDefault();
         }
 
         #endregion

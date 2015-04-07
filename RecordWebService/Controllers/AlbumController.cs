@@ -37,9 +37,17 @@ namespace RecordWebService.Controllers
         public Album Get(string s)
         {
             var b = StaticMethods.StringToByteArray(s);
-            Album ret = new Album(DatabaseSingleton.Instance.GetTblAlbums(b));
-            ret.Songs = DatabaseSingleton.Instance.GetSongNames(b);
-            return ret;
+            tblAlbum album = DatabaseSingleton.Instance.GetTblAlbums(b);
+            if (album == null)
+            {
+                return null;
+            }
+            else
+            {
+                Album ret = new Album(album);
+                ret.Songs = DatabaseSingleton.Instance.GetSongNames(b);
+                return ret;
+            }
         }
     }
 }

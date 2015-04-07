@@ -146,11 +146,11 @@ namespace RecordWebService.Models
             command.ExecuteNonQuery();
         }
 
-        public void AddTblSong(tblSong ts, int breaknum)
+        public void AddTblSong(tblSong ts)
         {
             string sql;
             SQLiteCommand command;
-            sql = "insert into tblSong (Key, Title, Artist, Album, Break_Number, Break_Location_Start, Break_Location_End) values (@Key,'" + ts.Title.Replace("'", "''") + "','" + ts.Artist.Replace("'", "''") + "','" + ts.Album.Replace("'", "''") + "','" + breaknum + "','" + ts.Break_Location_Start + "','" + ts.Break_Location_End + "')";
+            sql = "insert into tblSong (Key, Title, Artist, Album, Break_Number, Break_Location_Start, Break_Location_End) values (@Key,'" + ts.Title.Replace("'", "''") + "','" + ts.Artist.Replace("'", "''") + "','" + ts.Album.Replace("'", "''") + "','" + ts.Break_Number + "','" + ts.Break_Location_Start + "','" + ts.Break_Location_End + "')";
             command = new SQLiteCommand(sql, dbConnection);
             command.Parameters.Add("@Key", DbType.Binary).Value = ts.Key;
             command.ExecuteNonQuery();

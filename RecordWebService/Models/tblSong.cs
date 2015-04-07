@@ -21,5 +21,10 @@ namespace RecordWebService.Models
         public int Break_Location_Start { get; set; }
         [Column(Name = "Break_Location_End")]
         public int Break_Location_End { get; set; }
+
+        public tblSong()
+        {
+            
+        }
     }
 }

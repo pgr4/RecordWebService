@@ -35,6 +35,17 @@ namespace RecordWebService.Controllers
             return ret;
         }
 
+        public void Get()
+        {
+            JsonAlbumData a = new JsonAlbumData();
+            a.Album = "sds";
+            a.Artist = "art";
+            a.Key = "45141E28323C46505A64";
+            a.Songs = "1,2,3,4,5,6,7,8,9,10,11";
+            a.Image = "http://schemas.com";
+            DatabaseSingleton.Instance.AddTblAlbum(a.GetTblAlbum());
+        }
+
         /// <summary>
         /// Add a tblAlbum and multiple tblSong entries to the database given the JsonAlbumData retrieved
         /// </summary>

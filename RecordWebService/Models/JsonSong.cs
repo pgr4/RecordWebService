@@ -72,6 +72,21 @@ namespace RecordWebService.Models
 
         public tblAlbum GetTblAlbum()
         {
+            byte[] image = null;
+
+            try
+            {
+                image = DownloadRemoteImageFile(Image);
+            }
+            catch (Exception e)
+            {
+            }
+
+            if (image == null)
+            {
+                image = File.ReadAllBytes(@"C:\RecordWebApi\vinyl-record.jpg");
+            }
+
             var bytesKey = StaticMethods.StringToByteArray(Key);
 
             var s = Songs.Split(',');
@@ -82,15 +97,15 @@ namespace RecordWebService.Models
                 Breaks = s.Count() - 1,
                 Calculated = 1,
                 Key = bytesKey,
-                Image = DownloadRemoteImageFile(Image)
+                Image = image
             };
             return ret;
         }
 
         private static byte[] DownloadRemoteImageFile(string uri)
         {
-            HttpWebRequest request = (HttpWebRequest) WebRequest.Create(uri);
-            HttpWebResponse response = (HttpWebResponse) request.GetResponse();
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(uri);
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
 
             // Check that the remote file was found. The ContentType
             // check is performed since a request for a non-existent

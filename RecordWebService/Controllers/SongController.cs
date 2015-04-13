@@ -27,23 +27,13 @@ namespace RecordWebService.Controllers
         public TotalAlbum Get(string key)
         {
             TotalAlbum ret = new TotalAlbum();
-            var b = Convert.FromBase64String(key);
-            ret.Album = DatabaseSingleton.Instance.GetTblAlbums(b);
+            //var b = DatabaseSingleton.StringToKey(key);
+            //var b = Convert.FromBase64String(key);
+            ret.Album = DatabaseSingleton.Instance.GetTblAlbums(key);
             ret.Songs = (from item in DatabaseSingleton.Instance.DbSongs
-                         where item.Key == b
+                         where item.Key == key 
                          select item.Title).ToList();
             return ret;
-        }
-
-        public void Get()
-        {
-            JsonAlbumData a = new JsonAlbumData();
-            a.Album = "sds";
-            a.Artist = "art";
-            a.Key = "45141E28323C46505A64";
-            a.Songs = "1,2,3,4,5,6,7,8,9,10,11";
-            a.Image = "http://schemas.com";
-            DatabaseSingleton.Instance.AddTblAlbum(a.GetTblAlbum());
         }
 
         /// <summary>

@@ -36,8 +36,9 @@ namespace RecordWebService.Controllers
         [HttpGet]
         public Album Get(string s)
         {
-            var b = StaticMethods.StringToByteArray(s);
-            tblAlbum album = DatabaseSingleton.Instance.GetTblAlbums(b);
+            //var b = DatabaseSingleton.StringToKey(s);
+            //var b = StaticMethods.StringToByteArray(s);
+            tblAlbum album = DatabaseSingleton.Instance.GetTblAlbums(s);
             if (album == null)
             {
                 return null;
@@ -45,7 +46,7 @@ namespace RecordWebService.Controllers
             else
             {
                 Album ret = new Album(album);
-                ret.Songs = DatabaseSingleton.Instance.GetSongNames(b);
+                ret.Songs = DatabaseSingleton.Instance.GetSongNames(s);
                 return ret;
             }
         }

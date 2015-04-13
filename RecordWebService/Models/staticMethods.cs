@@ -17,6 +17,25 @@ namespace RecordWebService.Models
                 .ToArray();
         }
 
+        public static int[] StringToKey(string key)
+        {
+            string[] tokens = key.Split(',');
+
+            return Array.ConvertAll<string, int>(tokens, int.Parse);
+        }
+
+        public static string KeyToString(int[] key)
+        {
+            string ret = key[0].ToString();
+
+            for (int i = 1; i < key.Length; i++)
+            {
+                ret += "," + key[i].ToString();
+            }
+
+            return ret;
+        }
+
         #endregion
     }
 }

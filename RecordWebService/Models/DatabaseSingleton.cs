@@ -68,12 +68,12 @@ namespace RecordWebService.Models
 
                 //CREATE TABLES
                 sql =
-                    "CREATE TABLE tblSong (Id integer primary key, Key blob, Title text, Artist text, Album text, Break_Number integer)";
+                    "CREATE TABLE tblSong (Id integer primary key, Key text, Title text, Artist text, Album text, Break_Number integer)";
                 command = new SQLiteCommand(sql, dbConnection);
                 command.ExecuteNonQuery();
 
                 sql =
-                    "CREATE TABLE tblAlbum (Id integer primary key, Key blob, Album text, Artist text, Calculated integer, Breaks integer, Image blob)";
+                    "CREATE TABLE tblAlbum (Id integer primary key, Key text, Album text, Artist text, Calculated integer, Breaks integer, Image blob)";
                 command = new SQLiteCommand(sql, dbConnection);
                 command.ExecuteNonQuery();
             }
@@ -106,7 +106,7 @@ namespace RecordWebService.Models
             DbAlbums = context.GetTable<tblAlbum>();
         }
 
-        public List<tblSong> GetTblSongs(byte[] b)
+        public List<tblSong> GetTblSongs(string b)
         {
             var ret = (from item in DbSongs
                        where item.Key == b
@@ -115,7 +115,7 @@ namespace RecordWebService.Models
             return ret;
         }
 
-        public List<string> GetSongNames(byte[] b)
+        public List<string> GetSongNames(string b)
         {
             var ret = (from item in DbSongs
                        where item.Key == b
@@ -124,7 +124,7 @@ namespace RecordWebService.Models
             return ret;
         }
 
-        public tblAlbum GetTblAlbums(byte[] b)
+        public tblAlbum GetTblAlbums(string b)
         {
             var ret = (from item in DbAlbums
                        where item.Key == b
@@ -141,7 +141,7 @@ namespace RecordWebService.Models
             string album = ta.Album.Replace("'", "''");
             sql = "insert into tblAlbum (Key, Album, Artist, Calculated, Breaks, Image) values (@Key,'" + album + "','" + artist + "','" + 1 + "','" + ta.Breaks + "', @Image)";
             command = new SQLiteCommand(sql, dbConnection);
-            command.Parameters.Add("@Key", DbType.Binary).Value = ta.Key;
+            command.Parameters.Add("@Key", DbType.String).Value = ta.Key;
             command.Parameters.Add("@Image", DbType.Binary).Value = ta.Image;
             command.ExecuteNonQuery();
         }
@@ -152,11 +152,11 @@ namespace RecordWebService.Models
             SQLiteCommand command;
             sql = "insert into tblSong (Key, Title, Artist, Album, Break_Number, Break_Location_Start, Break_Location_End) values (@Key,'" + ts.Title.Replace("'", "''") + "','" + ts.Artist.Replace("'", "''") + "','" + ts.Album.Replace("'", "''") + "','" + ts.Break_Number + "','" + ts.Break_Location_Start + "','" + ts.Break_Location_End + "')";
             command = new SQLiteCommand(sql, dbConnection);
-            command.Parameters.Add("@Key", DbType.Binary).Value = ts.Key;
+            command.Parameters.Add("@Key", DbType.String).Value = ts.Key;
             command.ExecuteNonQuery();
         }
 
-        public byte[] GetImageData(byte[] key)
+        public byte[] GetImageData(string key)
         {
             return (from item in DbAlbums
                     where item.Key == key
@@ -164,5 +164,6 @@ namespace RecordWebService.Models
         }
 
         #endregion
+
     }
 }

@@ -25,7 +25,7 @@ namespace RecordWebService.Models
             List<tblSong> ret = new List<tblSong>();
             try
             {
-                var bytesKey = StaticMethods.StringToByteArray(Key);
+                var intKey = StaticMethods.StringToKey(Key);
 
                 int i = 0;
 
@@ -37,17 +37,17 @@ namespace RecordWebService.Models
                     if (i == 0)
                     {
                         start = int.MinValue;
-                        end = bytesKey[0];
+                        end = intKey[0];
                     }
                     else if (i == splitList.Count() - 1)
                     {
-                        start = bytesKey[i - 1];
+                        start = intKey[i - 1];
                         end = int.MaxValue;
                     }
                     else
                     {
-                        start = bytesKey[i - 1];
-                        end = bytesKey[i];
+                        start = intKey[i - 1];
+                        end = intKey[i];
                     }
 
                     ret.Add(new tblSong()
@@ -55,7 +55,7 @@ namespace RecordWebService.Models
                         Album = Album,
                         Artist = Artist,
                         Break_Number = i++,
-                        Key = bytesKey,
+                        Key = Key,
                         Title = item,
                         Break_Location_Start = start,
                         Break_Location_End = end
@@ -87,7 +87,7 @@ namespace RecordWebService.Models
                 image = File.ReadAllBytes(@"C:\RecordWebApi\vinyl-record.jpg");
             }
 
-            var bytesKey = StaticMethods.StringToByteArray(Key);
+            var bytesKey = StaticMethods.StringToKey(Key);
 
             var s = Songs.Split(',');
             tblAlbum ret = new tblAlbum()
@@ -96,7 +96,7 @@ namespace RecordWebService.Models
                 Artist = Artist,
                 Breaks = s.Count() - 1,
                 Calculated = 1,
-                Key = bytesKey,
+                Key = Key,
                 Image = image
             };
             return ret;

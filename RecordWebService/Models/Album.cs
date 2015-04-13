@@ -7,7 +7,7 @@ namespace RecordWebService.Models
 {
     public class Album
     {
-        public byte[] Key { get; set; }
+        public string Key { get; set; }
         public string Artist { get; set; }
         public string Name { get; set; }
         public int Calculated { get; set; }

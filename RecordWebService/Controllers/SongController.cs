@@ -27,8 +27,6 @@ namespace RecordWebService.Controllers
         public TotalAlbum Get(string key)
         {
             TotalAlbum ret = new TotalAlbum();
-            //var b = DatabaseSingleton.StringToKey(key);
-            //var b = Convert.FromBase64String(key);
             ret.Album = DatabaseSingleton.Instance.GetTblAlbums(key);
             ret.Songs = (from item in DatabaseSingleton.Instance.DbSongs
                          where item.Key == key 

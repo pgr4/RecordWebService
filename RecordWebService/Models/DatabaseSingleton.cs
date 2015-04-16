@@ -133,6 +133,44 @@ namespace RecordWebService.Models
             return ret.FirstOrDefault();
         }
 
+        public tblAlbum TryGetTblAlbums(string b)
+        {
+            List<int> matchKey = new List<int>();
+            foreach (string obj in b.Split(','))
+            {
+                matchKey.Add(Convert.ToInt32(obj));
+            }
+
+            foreach (var item in DbAlbums)
+            {
+                List<int> itemKey = new List<int>();
+                foreach (string obj in item.Key.Split(','))
+                {
+                    itemKey.Add(Convert.ToInt32(obj));
+                }
+
+                bool found = true;
+                if (itemKey.Count == matchKey.Count)
+                {
+                    for (int i = 0; i < itemKey.Count; i++)
+                    {
+                        if (Math.Abs(matchKey[i] - itemKey[i]) > 5)
+                        {
+                            found = false;
+                            break;
+                        }
+                    }
+                }
+
+                if (found)
+                {
+                    return item;
+                }
+            }
+
+            return null;
+        }
+
         public void AddTblAlbum(tblAlbum ta)
         {
             string sql;

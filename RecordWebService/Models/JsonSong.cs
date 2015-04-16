@@ -87,7 +87,7 @@ namespace RecordWebService.Models
                 image = File.ReadAllBytes(@"C:\RecordWebApi\vinyl-record.jpg");
             }
 
-            var bytesKey = StaticMethods.StringToKey(Key);
+            //var bytesKey = StaticMethods.StringToKey(Key);
 
             var s = Songs.Split(',');
             tblAlbum ret = new tblAlbum()
